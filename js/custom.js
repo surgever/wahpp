@@ -1,6 +1,1 @@
 
-var intro = function() {
-
-}
-
-  setTimeout()
