@@ -3,7 +3,6 @@ var red = function(event) {
 	$('#wahlogo').css('background','red');
 };
 $(document).ready(function() {
-	navigator.splashscreen.hide();
 	$('#wahlogo').click(red);
 	$('#page-load div').fadeIn(2000,function(){
 		$('span',this).animate({opacity:1},function(){
