@@ -4,7 +4,7 @@
         id        = "com.phonegap.example"
         versionCode="10" 
         version   = "1.0.0">
-    <name>Wahpp 3:20</name>
+    <name>Wahpp 3:25</name>
     <description>
         Whack a Hack app! 
     </description>
@@ -15,5 +15,7 @@
 	<access origin="https://wahackpokemon.com" />
     <preference name="orientation" value="landscape" />
     <preference name="fullscreen" value="true" />
+    <preference name="show-splash-screen-spinner" value="false" />
+	<preference name="auto-hide-splash-screen" value="false" />
 	<gap:splash src="img/splash.png" />
 </widget>
