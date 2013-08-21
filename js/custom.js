@@ -1,5 +1,3 @@
-navigator.splashscreen.hide();
-
 var red = function(event) {
 	event.preventDefault();
 	$('#wahlogo').css('background','red');
