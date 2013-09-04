@@ -29,7 +29,7 @@ var introvilla = function() {
 var showdesk = function() {
 	var o = $('#noticias').addClass('loading');
 	if(!sessionStorage.noticias) $.ajax({
-		dataType: 'jsonp',jsonp: 'jsonp_callback',url: 'http://wahackpokemon.com/wah/app/getnews.php',
+		dataType: 'jsonp',jsonp: 'jsonp_callback',url: 'http://wahackpokemon.com/wah/api/getnews.php',
 		success: function(data) {
 			var html='';
 			//for(var i=0;i<data.length;i++){
