@@ -3,7 +3,7 @@ var carga = function() {
 	$('#pageload div').fadeIn(2000,function(){
 		$('span',this).animate({opacity:1},180,function(){
 			setTimeout(function(){
-				$('#pageload').css('background-color','#FFF').fadeOut(1000,function(){$('#pageload').remove();});
+				$('#pageload').fadeOut(1000,function(){$('#pageload').remove();});
 			},1000);
 		});
 	});
@@ -17,7 +17,7 @@ var carga = function() {
 			else {appstart(homeapp);}
 		} else */
 		//$('#pageload').remove();
-			$('body').addClass('desk');
+			$('#pagedesk').addClass('desk');
 			showdesk();
 	}
 };

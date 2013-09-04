@@ -25,11 +25,12 @@ i,em{font-style:italic}
 #pageload div{display:none; top:50%; left:50%; margin:-25px -55px;}
 #pageload div span{display:block; opacity:0; background-position:0px -50px}
 /*page-desk*/
-#pagedesk {background:url(birchdesk.jpg);color:#222;min-height:100%}
+#pagedesk {min-height:100%}
+#pagedesk.desk {background:url(birchdesk.jpg);color:#222;}
 #pagedesk .wrapper { padding:5px 0 50px; overflow: auto }
 #pagedesk #noticias {background: #FFF;border-radius:5px; overflow:hidden; margin:0 5px 10px}
 #pagedesk #noticias article {}
-#pagedesk .tit {font-size:13px; color:#666; padding:6px 8px; border-top:1px solid #ccc; position:relative;cursor:pointer}
+#pagedesk .tit {font-size:13px; color:#666; padding:6px 8px; border-top:1px solid #ccc; position:relative;cursor:pointer;-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;user-select: none;}
 #pagedesk .tit:hover,#pagedesk article.show .tit {color:#000}
 #pagedesk .tit span {font-size: 11px; padding:0 0 0 10px; color: #ccc }
 #pagedesk .tit b {position: absolute; top:5px; right:10px; -webkit-transition:0.2s ease-out; transition:0.2s ease-out; opacity:0.7}
