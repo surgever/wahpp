@@ -2,8 +2,8 @@ var msg,apps;
 var carga = function() {
 	$('#pageload div').fadeIn(2000,function(){
 		$('span',this).animate({opacity:1},180,function(){
-	//		$('#pagedesk').addClass('desk');
-	//		showdesk();
+			$('#pagedesk').addClass('desk');
+			showdesk();
 			setTimeout(function(){
 				$('#pageload').fadeOut(2000,function(){$('#pageload').remove();});
 			},1000);
@@ -18,9 +18,9 @@ var carga = function() {
 			if(localStorage[memapp]) apprestore(homeapp);
 			else {appstart(homeapp);}
 		} else */
-			$('#pageload').remove();
-			$('#pagedesk').addClass('desk');
-			showdesk();
+		//	$('#pageload').remove();
+		//	$('#pagedesk').addClass('desk');
+		//	showdesk();
 	}
 };
 var introvilla = function() {
