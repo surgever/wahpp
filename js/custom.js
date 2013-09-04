@@ -39,12 +39,12 @@ var showdesk = function() {
 			};
 			sessionStorage.noticias = html;
 			o.removeClass('loading').html(html);
-			$('.tit',o).on('click touchstart',pledesplegar);
+			$('.tit',o).on('click touchend',pledesplegar);
 		},
 		error: function(err, textStatus, errorThrown) {alert(textStatus);} 
 	});
 	else {o.removeClass('loading').html(sessionStorage.noticias);
-			$('.tit',o).on('click touchstart',pledesplegar);
+			$('.tit',o).on('click touchend',pledesplegar);
 	}
 	apps = [["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"]];
 	for(var i=0;i<apps.length;i++) {
@@ -54,21 +54,25 @@ var showdesk = function() {
 };
 var openapp = function(e) {
 	e.preventDefault();
-	$(this).addClass('open');
+	$(this).addClass('lift');
 	var appname = $(this).attr('rel');
 	$('#pageapp').addClass('opening').load($(this).attr('href'),function(){
-		$(this).attr('rel',appname).addClass('on').fadeIn('slow',function(){
+		$(this).attr('rel',appname).addClass('on opaque');
+		setTimeout(function(){
 			$('#pagedesk').addClass('off');
 			$('#pageapp').removeClass('opening').on('click touchstart',closeapp);
-		});
+		},1000);
 	});
 };
 var closeapp = function() {
 	$('#pagedesk').removeClass('off');
-	$('#pageapp').fadeOut(function(){
-		$(this).removeClass('on');
-		$('#dir a').removeClass('open');
-	});
+	$('#pageapp').removeClass('opaque');
+	setTimeout(function(){
+		$('#dir a').removeClass('lift');
+		setTimeout(function(){
+			$('#pageapp').removeClass('on');
+		},800);
+	},200);
 };
 
 var pledesplegar = function() {
