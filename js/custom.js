@@ -1,9 +1,9 @@
-var msg;
+var msg,apps;
 var carga = function() {
 	$('#pageload div').fadeIn(2000,function(){
 		$('span',this).animate({opacity:1},180,function(){
-			$('#pagedesk').addClass('desk');
-			showdesk();
+	//		$('#pagedesk').addClass('desk');
+	//		showdesk();
 			setTimeout(function(){
 				$('#pageload').fadeOut(2000,function(){$('#pageload').remove();});
 			},1000);
@@ -18,31 +18,57 @@ var carga = function() {
 			if(localStorage[memapp]) apprestore(homeapp);
 			else {appstart(homeapp);}
 		} else */
-		//$('#pageload').remove();
-		//	$('#pagedesk').addClass('desk');
-		//	showdesk();
+			$('#pageload').remove();
+			$('#pagedesk').addClass('desk');
+			showdesk();
 	}
 };
 var introvilla = function() {
 	return false;
 };
 var showdesk = function() {
-	$.ajax({
+	var o = $('#noticias').addClass('loading');
+	if(!sessionStorage.noticias) $.ajax({
 		dataType: 'jsonp',jsonp: 'jsonp_callback',url: 'http://wahackpokemon.com/wah/app/getnews.php',
 		success: function(data) {
 			var html='';
-			for(var i=0;i<data.length;i++){
+			//for(var i=0;i<data.length;i++){
+			for(var i=0;i<3;i++){
 				html += '<article class="desplegable"><header><h1 class="tit">'+data[i][2]
 				+'<span>~'+data[i][1]+'</span><b>W</b></h1></header><section>'+data[i][3]+'</section></article>';
 			};
-			$('#noticias').html(html);
-			$('#noticias .tit').click(pledesplegar);
+			sessionStorage.noticias = html;
+			o.removeClass('loading').html(html);
+			$('.tit',o).click(pledesplegar);
 		},
 		error: function(err, textStatus, errorThrown) {alert(textStatus);} 
 	});
+	else {o.removeClass('loading').html(sessionStorage.noticias);
+			$('.tit',o).click(pledesplegar);
+	}
+	apps = [["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"]];
+	for(var i=0;i<apps.length;i++) {
+		$('#dir').append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="img/app-'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
+	}
+	$('#dir a').click(openapp);
 };
-var animacionabrirapp = function() {
-	$('#sombra blanca', this).animate({width:'100%',height:'100%',top:0,left:0});
+var openapp = function(e) {
+	e.preventDefault();
+	$(this).addClass('open');
+	var appname = $(this).attr('rel');
+	$('#pageapp').addClass('opening').load($(this).attr('href'),function(){
+		$(this).attr('rel',appname).addClass('on').fadeIn('slow',function(){
+			$('#pagedesk').addClass('off');
+			$('#pageapp').removeClass('opening').click(closeapp);
+		});
+	});
+};
+var closeapp = function() {
+	$('#pagedesk').removeClass('off');
+	$('#pageapp').fadeOut(function(){
+		$(this).removeClass('on');
+		$('#dir a').removeClass('open');
+	});
 };
 
 var pledesplegar = function() {

@@ -16,6 +16,7 @@ body.desk{}
 a{text-decoration:none}
 b,strong{font-weight:bold}
 i,em{font-style:italic}
+.loading {background:url(loading.gif) center no-repeat}
 #wahbar{background:#555;text-align:left}
 #wahbar a{color:#fff}
 #but-menu{float:right}
@@ -27,8 +28,9 @@ i,em{font-style:italic}
 /*page-desk*/
 #pagedesk {min-height:100%}
 #pagedesk.desk {background:url(birchdesk.jpg);color:#222;}
-#pagedesk .wrapper { padding:5px 0 50px; overflow: auto }
-#pagedesk #noticias {background: #FFF;border-radius:5px; overflow:hidden; margin:0 5px 10px}
+#pagedesk.off {display:none;}
+#pagedesk .wrapper { padding:5px 0 50px; }
+#pagedesk #noticias {background-color: #FFF; min-height:30px; border-radius:5px; overflow:hidden; margin:0 5px 15px}
 #pagedesk #noticias article {}
 #pagedesk .tit {font-size:13px; color:#666; padding:6px 8px; border-top:1px solid #ccc; position:relative;cursor:pointer;-webkit-touch-callout: none;-webkit-user-select: none;-moz-user-select: none;user-select: none;}
 #pagedesk .tit:hover,#pagedesk article.show .tit {color:#000}
@@ -39,7 +41,15 @@ i,em{font-style:italic}
 #pagedesk #noticias article.show section {height:auto; padding: 5px;}
 #pagedesk #noticias article.show .tit b {-webkit-transform: rotate(180deg); transform: rotate(90deg)}
 #pagedesk #dock { height:40px; width:100%; background: rgba(0,0,0,0.3); overflow:show; position: fixed; bottom:0px;left:0px}
-#pagedesk #dir {padding:0 15px}
-#pagedesk #dir div {display:block; float:left; width:100px; height:150px; text-align:center; background: rgba(255,0,0,0.3)}
+#pagedesk #dir {padding:0 15px; text-align:center}
+#pagedesk #dir a {display:inline-block; width:64px; height:62px; margin:0px 15px 40px; overflow:visible; }
+#pagedesk #dir img {position:relative; width:64px; display:block; margin:0px auto 10px; box-shadow:0px 3px 7px rgba(0,0,0,0.3); border-radius:10px; transition: 1s ease-out}
+#pagedesk #dir span {background:rgba(0,0,0,0.3);color:#fff;text-shadow:0px 1px 1px #000; padding:0 5px; border-radius:5px}
+#pagedesk #dir a:hover span,#pagedesk #dir a:focus span {background:rgba(0,0,0,0.6);}
+#pagedesk #dir a:active{position:relative; top:1px}
+#pagedesk #dir a.open {z-index:2}
+#pagedesk #dir a.open img{top:-60px; left:-13px; box-shadow:0px 3px 7px 500px #fff; width:90px;}
 
 /*page-app*/
+#pageapp.on{width:100%;min-height:100%;z-index:3;position:absolute;top:0px;left:0px;background:purple} 
+#pageapp.opening{position:fixed !important} 
