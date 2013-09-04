@@ -11,12 +11,33 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 html,body{height:100%}
 body{font:normal 14px arial;color:#fff;}
+body.desk{}
 a{text-decoration:none}
+b,strong{font-weight:bold}
+i,em{font-style:italic}
 #wahbar{background:#555;text-align:left}
 #wahbar a{color:#fff}
 #but-menu{float:right}
 /*page-load*/
-#page-load{height:100%;width:100%;position:relative}
-#page-load *{position:absolute;background:url(load-logo.png); width:110px;height:50px;}
-#page-load div{display:none; top:50%; left:50%; margin:-25px -55px;}
-#page-load div span{display:block; opacity:0; background-position:0px -50px}
+#pageload{height:100%;width:100%;position:absolute;top:0px;left:0px;background:#000;z-index:10}
+#pageload *{position:absolute;background:url(load-logo.png); width:110px;height:50px;}
+#pageload div{display:none; top:50%; left:50%; margin:-25px -55px;}
+#pageload div span{display:block; opacity:0; background-position:0px -50px}
+/*page-desk*/
+#pagedesk {background:url(birchdesk.jpg);color:#222;min-height:100%}
+#pagedesk .wrapper { padding:5px 0 50px; overflow: auto }
+#pagedesk #noticias {background: #FFF;border-radius:5px; overflow:hidden; margin:0 5px 10px}
+#pagedesk #noticias article {}
+#pagedesk .tit {font-size:13px; color:#666; padding:6px 8px; border-top:1px solid #ccc; position:relative;cursor:pointer}
+#pagedesk .tit:hover,#pagedesk article.show .tit {color:#000}
+#pagedesk .tit span {font-size: 11px; padding:0 0 0 10px; color: #ccc }
+#pagedesk .tit b {position: absolute; top:5px; right:10px; -webkit-transition:0.2s ease-out; transition:0.2s ease-out; opacity:0.7}
+#pagedesk #noticias article:first-child .tit {border:0px none} 
+#pagedesk #noticias section {height:0px; overflow:hidden}
+#pagedesk #noticias article.show section {height:auto; padding: 5px;}
+#pagedesk #noticias article.show .tit b {-webkit-transform: rotate(180deg); transform: rotate(90deg)}
+#pagedesk #dock { height:40px; width:100%; background: rgba(0,0,0,0.3); overflow:show; position: fixed; bottom:0px;left:0px}
+#pagedesk #dir {padding:0 15px}
+#pagedesk #dir div {display:block; float:left; width:100px; height:150px; text-align:center; background: rgba(255,0,0,0.3)}
+
+/*page-app*/
