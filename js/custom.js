@@ -16,7 +16,7 @@ var carga = function() {
 			if(localStorage[memapp]) apprestore(homeapp);
 			else {appstart(homeapp);}
 		} else */
-		$('#pageload').remove();
+		//$('#pageload').remove();
 			$('body').addClass('desk');
 			showdesk();
 	}
