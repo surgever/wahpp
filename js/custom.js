@@ -39,18 +39,18 @@ var showdesk = function() {
 			};
 			sessionStorage.noticias = html;
 			o.removeClass('loading').html(html);
-			$('.tit',o).click(pledesplegar);
+			$('.tit',o).on('click touchstart',pledesplegar);
 		},
 		error: function(err, textStatus, errorThrown) {alert(textStatus);} 
 	});
 	else {o.removeClass('loading').html(sessionStorage.noticias);
-			$('.tit',o).click(pledesplegar);
+			$('.tit',o).on('click touchstart',pledesplegar);
 	}
 	apps = [["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"]];
 	for(var i=0;i<apps.length;i++) {
 		$('#dir').append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="img/app-'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
 	}
-	$('#dir a').click(openapp);
+	$('#dir a').on('click touchstart',openapp);
 };
 var openapp = function(e) {
 	e.preventDefault();
@@ -59,7 +59,7 @@ var openapp = function(e) {
 	$('#pageapp').addClass('opening').load($(this).attr('href'),function(){
 		$(this).attr('rel',appname).addClass('on').fadeIn('slow',function(){
 			$('#pagedesk').addClass('off');
-			$('#pageapp').removeClass('opening').click(closeapp);
+			$('#pageapp').removeClass('opening').on('click touchstart',closeapp);
 		});
 	});
 };
