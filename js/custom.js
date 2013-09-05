@@ -1,4 +1,4 @@
-var msg,apps;
+var msg,apps,equis;
 var carga = function() {
 	$('#pageload div').fadeIn(2000,function(){
 		$('span',this).animate({opacity:1},180,function(){
@@ -39,18 +39,19 @@ var showdesk = function() {
 			};
 			sessionStorage.noticias = html;
 			o.removeClass('loading').html(html);
-			$('.tit',o).on('click touchend',pledesplegar);
+			$('.tit',o).on('click',pledesplegar);
 		},
 		error: function(err, textStatus, errorThrown) {alert(textStatus);} 
 	});
 	else {o.removeClass('loading').html(sessionStorage.noticias);
-			$('.tit',o).on('click touchend',pledesplegar);
+			$('.tit',o).on('click',pledesplegar);
 	}
 	apps = [["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"]];
 	for(var i=0;i<apps.length;i++) {
 		$('#dir').append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="img/app-'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
 	}
 	$('#dir a').on('click touchstart',openapp);
+	$('#dir a').on('dragstart', function (e) {e.preventDefault();});	
 };
 var openapp = function(e) {
 	e.preventDefault();
@@ -60,7 +61,7 @@ var openapp = function(e) {
 		$(this).attr('rel',appname).addClass('on opaque');
 		setTimeout(function(){
 			$('#pagedesk').addClass('off');
-			$('#pageapp').removeClass('opening').on('click touchstart',closeapp);
+			$('#pageapp').removeClass('opening');
 		},1000);
 	});
 };
@@ -73,6 +74,9 @@ var closeapp = function() {
 			$('#pageapp').removeClass('on');
 		},800);
 	},200);
+};
+var appcommons = function() {
+	$('.close').live();
 };
 
 var pledesplegar = function() {
