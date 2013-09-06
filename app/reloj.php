@@ -1,1 +1,2 @@
-La hora del sistema!
+<button class="appclose">×</button>
+

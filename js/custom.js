@@ -1,33 +1,27 @@
-var msg,apps,equis;
-var carga = function() {
-	$('#pageload div').fadeIn(2000,function(){
+var msg,apps,equis,$app,$desk,$load=$('#pageload'),desked=0;
+
+var intro = function() {
+	$('div',$load).fadeIn(2000,function(){
 		$('span',this).animate({opacity:1},180,function(){
-			$('#pagedesk').addClass('desk');
-			showdesk();
+			cargar();
 			setTimeout(function(){
-				$('#pageload').fadeOut(2000,function(){$('#pageload').remove();});
+				$load.fadeOut(2000,function(){$load.remove();});
 			},1000);
 		});
 	});
-	if(typeof(Storage)==="undefined") alert('Sin almacenamiento local la aplicación no funcionará.');
-	else {/*
-		if(!localStorage.nick) introvilla();
-		else if(localStorage.homeapp) {
-			var homeapp = localStorage.homeapp;
-			var memapp = 'mem'+homeapp;
-			if(localStorage[memapp]) apprestore(homeapp);
-			else {appstart(homeapp);}
-		} else */
-		//	$('#pageload').remove();
-		//	$('#pagedesk').addClass('desk');
-		//	showdesk();
-	}
-};
+	sessionStorage.introed = true;
+}
 var introvilla = function() {
 	return false;
 };
+var cargar = function() {
+	$desk = $('#pagedesk').addClass('desk');
+	$app = $('#pageapp');
+	if(!localStorage.home) showdesk();
+	else openapp({name: localStorage.home,url: 'app/'+localStorage.home+'.php'});
+}
 var showdesk = function() {
-	var o = $('#noticias').addClass('loading');
+	var $not = $('#noticias',$desk).addClass('loading');
 	if(!sessionStorage.noticias) $.ajax({
 		dataType: 'jsonp',jsonp: 'jsonp_callback',url: 'http://wahackpokemon.com/wah/api/getnews.php',
 		success: function(data) {
@@ -38,40 +32,52 @@ var showdesk = function() {
 				+'<span>~'+data[i][1]+'</span><b>W</b></h1></header><section>'+data[i][3]+'</section></article>';
 			};
 			sessionStorage.noticias = html;
-			o.removeClass('loading').html(html);
-			$('.tit',o).on('click',pledesplegar);
+			$not.removeClass('loading').html(html);
+			$('.tit',$not).on('click',pledesplegar);
 		},
 		error: function(err, textStatus, errorThrown) {alert(textStatus);} 
 	});
-	else {o.removeClass('loading').html(sessionStorage.noticias);
-			$('.tit',o).on('click',pledesplegar);
+	else { $not.removeClass('loading').html(sessionStorage.noticias);
+			$('.tit',$not).on('click',pledesplegar);
 	}
 	apps = [["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"]];
 	for(var i=0;i<apps.length;i++) {
-		$('#dir').append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="img/app-'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
+		$('#dir',$desk).append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="img/app-'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
 	}
-	$('#dir a').on('click touchstart',openapp);
-	$('#dir a').on('dragstart', function (e) {e.preventDefault();});	
-};
-var openapp = function(e) {
-	e.preventDefault();
-	$(this).addClass('lift');
-	var appname = $(this).attr('rel');
-	$('#pageapp').addClass('opening').load($(this).attr('href'),function(){
-		$(this).attr('rel',appname).addClass('on opaque');
-		setTimeout(function(){
-			$('#pagedesk').addClass('off');
-			$('#pageapp').removeClass('opening');
-		},1000);
+	$('#dir a',$desk).on('dragstart', function (e) {e.preventDefault();});
+	$('#dir a',$desk).on('click touchstart',function(e){
+		e.preventDefault();
+		$(this).addClass('lift');	
+		openapp({name: $(this).attr('rel'),url: $(this).attr('href')});
 	});
+	desked = true;
+};
+var openapp = function(app) {
+	if($app.attr('rel') != app.name) $('#pageapp').load(app.url,anim);
+	else anim();
+	function anim() {
+		$app.attr('rel',app.name).addClass('opening on opaque');
+			setTimeout(function(){
+				$('#pagedesk').addClass('off');
+				setTimeout(function(){
+					$('#pageapp').removeClass('opening')
+					.find('.appclose,.appback').click(closeapp);
+					if(window.location.hash) var hash = window.location.hash.substring(1);
+					if(hash!=app.name) history.pushState(app, app.name, '/#'+app.name);
+				},200);
+		},800);
+	}
 };
 var closeapp = function() {
+	if(!desked) showdesk();
 	$('#pagedesk').removeClass('off');
-	$('#pageapp').removeClass('opaque');
+	$('#pageapp').addClass('opening').removeClass('opaque');
 	setTimeout(function(){
 		$('#dir a').removeClass('lift');
 		setTimeout(function(){
-			$('#pageapp').removeClass('on');
+			$('#pageapp').removeClass('opening on');
+			if(window.location.hash) var hash = window.location.hash.substring(1);
+			if(hash) {window.location.hash='';}
 		},800);
 	},200);
 };
@@ -86,10 +92,15 @@ var pledesplegar = function() {
 //new Audio(t).play();
 // $().load(url) */
 
+window.onpopstate = function(event) {
+		if(window.location.hash) var hash = window.location.hash.substring(1);
+		if(hash && !$('#pageapp').hasClass('on')) openapp({name: hash,url: 'app/'+hash+'.php'});
+		else if(!hash && $('#pageapp').hasClass('on')) closeapp();
+};
 $(document).ready(function() {
-	if(typeof(Storage)==="undefined") alert('Sin almacenamiento local la aplicación no funcionará.');
-	carga();
-	
-	
-	//cargarnoticias();
+	if(typeof(Storage)==="undefined") alert('Sin almacenamiento local la aplicación no funcionará.') 
+	else {
+		if(!sessionStorage.introed) intro();
+		else { $load.remove(); cargar(); }
+	}
 });
