@@ -16,6 +16,7 @@
 	<access origin="https://wahackforo.com" />
 	<access origin="https://imageshack.us" />
 	<access origin="https://imageshack.com" />
+	<access origin="https://photobucket.com" />
     <preference name="fullscreen" value="true" />
     <preference name="show-splash-screen-spinner" value="false" />
 	<preference name="splash-screen-duration" value="3000" />

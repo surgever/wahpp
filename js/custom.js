@@ -1,4 +1,5 @@
 var msg,apps,equis,$app,$desk,$load=$('#pageload'),desked=0;
+apps = [["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["dado","Dado"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"]];
 
 var intro = function() {
 	$('div',$load).fadeIn(2000,function(){
@@ -40,7 +41,6 @@ var showdesk = function() {
 	else { $not.removeClass('loading').html(sessionStorage.noticias);
 			$('.tit',$not).on('click',pledesplegar);
 	}
-	apps = [["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["dado","Dado"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"]];
 	for(var i=0;i<apps.length;i++) {
 		$('#dir',$desk).append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="img/app-'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
 	}

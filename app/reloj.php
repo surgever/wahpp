@@ -38,17 +38,19 @@ colorcielo();
  </script>
 <style type="text/css">
 #pageapp.on {background: url(img/fondo-cielo.png) bottom repeat-x #70b070}
-#reloj, #pageapp span  {display:block; background: rgba(150,150,150,0.3); border:3px solid rgba(0,0,0,0.4);; border-radius:50%; width:250px; height: 250px; position: relative; margin:10px auto 0}
+#reloj, #pageapp span  {display:block; background: rgba(150,150,150,0.3); border:3px solid rgba(0,0,0,0.4); border-radius:50%; width:250px; height: 250px; position: relative; margin:40px auto 0}
 #reloj i {display:block; background:#000; width:1%; height:50%; -webkit-transform-origin: bottom; -moz-transform-origin: bottom; transform-origin: bottom; position: absolute; left: 50%; bottom:50%}
 #reloj #h {height:30%}
 #reloj #m {height:45%}
 #reloj #s {height:40%; background: darkred}
 #reloj b {display: block; background: #000; height:3%; width:3%; position:absolute; left:49%; top:49%; border-radius:10px}
-#pageapp span {width:90px; height:32px; border-radius:5px; color:#fff; line-height:30px; text-align: center; margin-top:50px}
+#pageapp span {width:90px; height:32px; border-radius:5px; color:#fff; line-height:30px; text-align: center; margin-top:80px}
 
 @media (max-width:260px) {#reloj {width:200px; height:200px}}
 @media (max-width:210px) {#reloj {width:150px; height:150px}}
-@media (max-height:360px) {#pageapp span {margin-top:10px}}
+@media (max-height:450px) {#pageapp span {margin-top:50px}}
+@media (max-height:400px) {#reloj {margin-top:10px}}
+@media (max-height:370px) {#pageapp span {margin-top:10px}}
 @media (max-height:320px) {#reloj {width:200px; height:200px}}
 @media (max-height:270px) {#reloj {width:150px; height:150px}}
 </style>

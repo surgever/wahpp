@@ -22,7 +22,7 @@ i,em{font-style:italic}
 #wahbar a{color:#fff}
 #but-menu{float:right}
 /*page-load*/
-#pageload{height:102%;width:102%;position:absolute;top:0px;left:0px;background:#000;z-index:10;}
+#pageload{height:100%;width:100%;position:fixed;top:0px;left:0px;background:#000;z-index:10;}
 #pageload *{position:absolute;background:url(load-logo.png); width:110px;height:50px;}
 #pageload div{display:none; top:50%; left:50%; margin:-25px -55px;}
 #pageload div span{display:block; opacity:0; background-position:0px -50px}
@@ -41,6 +41,9 @@ i,em{font-style:italic}
 #pagedesk #noticias section {height:0px; overflow:hidden}
 #pagedesk #noticias article.show section {height:auto; padding: 5px;}
 #pagedesk #noticias article.show .tit b {-webkit-transform: rotate(180deg); transform: rotate(90deg)}
+#pagedesk #noticias img{max-width:100%} 
+#pagedesk #noticias .youtube{background: #fdd;display: block;text-align: center;padding: 10px 0 5px;color: red;} 
+#pagedesk #noticias .youtube:hover{background: #f00;color: #fff;} 
 #pagedesk #dock { height:40px; width:100%; background: rgba(0,0,0,0.3); overflow:show; position: fixed; bottom:0px;left:0px}
 #pagedesk #dir {padding:0 15px; text-align:center}
 #pagedesk #dir a {display:inline-block; width:64px; height:62px; margin:0px 15px 40px; border-radius:10px; background:rgba(0,0,0,0.3); box-shadow:0px 3px 7px rgba(0,0,0,0.3); overflow:visible; }
