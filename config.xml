@@ -4,7 +4,7 @@
         id        = "com.wahackpokemon.wahpp"
         versionCode="10" 
         version   = "1.0.0">
-    <name>Wahpp ico</name>
+    <name>Wahpp Suite</name>
     <description>
         Whack a Hack app! 
     </description>
@@ -17,6 +17,7 @@
 	<access origin="https://imageshack.us" />
 	<access origin="https://imageshack.com" />
 	<access origin="https://photobucket.com" />
+	<access origin="https://ytimg.com" />
     <preference name="fullscreen" value="true" />
     <preference name="show-splash-screen-spinner" value="false" />
 	<preference name="splash-screen-duration" value="3000" />
