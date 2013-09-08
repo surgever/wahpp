@@ -1,4 +1,3 @@
-<button class="appclose">×</button>
 
 <div class="clear"></div>
 Home: 
@@ -17,3 +16,8 @@ $(document).ready(function() {
 	$('#optionshome button').click(optionshome);
 });
 </script>
+<style type="text/css">
+#optionshome button {background: #bbb; color:#000; border:none; border-radius:6px; line-height:25px; padding:1px 15px; margin:10px }
+#optionshome button:hover {background: #CFB112}
+#optionshome button:active {background: #FF0}
+</style>

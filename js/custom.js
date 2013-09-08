@@ -40,11 +40,11 @@ var showdesk = function() {
 	else { $not.removeClass('loading').html(sessionStorage.noticias);
 			$('.tit',$not).on('click',pledesplegar);
 	}
-	apps = [["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"]];
+	apps = [["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["dado","Dado"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"],["ajustes","Ajustes"],["reloj","Reloj"],["notas","Notas"]];
 	for(var i=0;i<apps.length;i++) {
 		$('#dir',$desk).append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="img/app-'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
 	}
-	$('#dir a',$desk).on('dragstart', function (e) {e.preventDefault();});
+	$('#dir a',$desk).on('dragstart touchmove', function (e) {e.preventDefault();});
 	$('#dir a',$desk).on('click touchstart',function(e){
 		e.preventDefault();
 		$(this).addClass('lift');	
@@ -61,7 +61,7 @@ var openapp = function(app) {
 				$('#pagedesk').addClass('off');
 				setTimeout(function(){
 					$('#pageapp').removeClass('opening')
-					.find('.appclose,.appback').click(closeapp);
+				//	.find('.appclose,.appback').click(closeapp);
 					if(window.location.hash) var hash = window.location.hash.substring(1);
 					if(hash!=app.name) history.pushState(app, app.name, '/#'+app.name);
 				},200);
