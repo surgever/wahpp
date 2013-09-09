@@ -27,12 +27,12 @@ var lanzar = function(o) {
 	y = (Math.floor(Math.random()*90));
 	scene.attr(
 		'style',
-		'-webkit-transform: rotateX(-50deg) rotateY('+y+'deg);'
-		+'-moz-transform: rotateX(-50deg) rotateY('+y+'deg);'
-		+'transform: rotateX(-50deg) rotateY('+y+'deg);'
+		'-webkit-transform: rotateX(-55deg) rotateY('+y+'deg);'
+		+'-moz-transform: rotateX(-55deg) rotateY('+y+'deg);'
+		+'transform: rotateX(-55deg) rotateY('+y+'deg);'
 	);
 };
-dado.click(lanzar);
+dado.on('click dragmove touchmove', lanzar);
 </script>
 <style type="text/css">
 #pageapp.on {background: green url(img/tapete.jpg) repeat}
