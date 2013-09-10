@@ -2,7 +2,7 @@
 <div id="dadowrapper">
 <div id="scene">
 <ol id="dado">
-<li id="interior"><div class="i"></div><div class="ii"></div><div class="iii"></div><div class="iv"></div><div class="v"></div><div class="vi"></div></li>
+<li class="int i"></li><li class="int ii"></li><li class="int iii"></li><li class="int iv"></li><li class="int v"></li><li class="int vi"></li>
 <li id="i"><div></div><b class="center">●</b></li>
 <li id="ii"><div></div><b class="left">●</b><b class="right">●</b></li>
 <li id="iii"><div></div><b class="center">●</b><b class="left">●</b><b class="right">●</b></li>
@@ -42,8 +42,7 @@ dado.on('click dragmove touchmove', lanzar);
 #scene { width:100%; height:100%; -webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;transform-style: preserve-3d; -webkit-transform: rotateX( -50deg ) translateZ( 20px ) rotateY( 30deg ); -moz-transform: rotateX( -50deg ) translateZ( 20px ) rotateY( 30deg ); transform: rotateX( -50deg ) translateZ( 20px ) rotateY( 30deg ); -webkit-transition:1s ease-in; -moz-transition:1s ease-in; transition:1s ease-in}
 #dado {display:block; width:100%; height:100%; -webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d;transform-style: preserve-3d; position: absolute; top:0px; left:0px;  padding:0; margin:0; list-style: none; -webkit-transition:2s ease-out; -moz-transition:2s ease-out; transition:2s ease-out}
 #dado li {display: block; width:100%; height:100%; position: absolute; top:0px; left:0px; background: #fff;-webkit-transition:all 0.5s ease-in;-moz-transition:all 0.5s ease-in;transition:all 0.5s ease-in; box-shadow:inset 0px 0px 50px #999; border-radius:20px; -webkit-transform-style: preserve-3d;-moz-transform-style: preserve-3d; }
-#dado li#interior {background: none; box-shadow:none; border-radius:0px; }
-#dado li#interior div {position: absolute; top:0px; left:0px; width:100%; height:100%; background:#bbb;border-radius:10px; display: block}
+#dado li.int {background: #bbb; box-shadow:none; }
 #dado li b {display:block; text-align:center; color:#000; font-size:70px;-webkit-transform: translateZ( 1px );-moz-transform: translateZ( 1px );transform: translateZ( 1px ); }
 #i   { -webkit-transform: rotateX(  90deg ) translateZ( 100px );transform: rotateX(  90deg ) translateZ( 100px ); }
 #ii  { -webkit-transform: rotateY( -90deg ) translateZ( 100px );transform: rotateY( -90deg ) translateZ( 100px ); }
@@ -51,12 +50,12 @@ dado.on('click dragmove touchmove', lanzar);
 #iv  { -webkit-transform: rotateY(   0deg ) translateZ( 100px );transform: rotateY(   0deg ) translateZ( 100px ); }
 #v   { -webkit-transform: rotateY(  90deg ) translateZ( 100px );transform: rotateY(  90deg ) translateZ( 100px ); }
 #vi  { -webkit-transform: rotateX( -90deg ) translateZ( 100px );transform: rotateX( -90deg ) translateZ( 100px ); }
-div.i   { -webkit-transform: rotateX(  90deg ) translateZ( 90px );transform: rotateX(  90deg ) translateZ( 90px ); }
-div.ii  { -webkit-transform: rotateY( -90deg ) translateZ( 90px );transform: rotateY( -90deg ) translateZ( 90px ); }
-div.iii { -webkit-transform: rotateX( 180deg ) translateZ( 90px );transform: rotateX( 180deg ) translateZ( 90px ); }
-div.iv  { -webkit-transform: rotateY(   0deg ) translateZ( 90px );transform: rotateY(   0deg ) translateZ( 90px ); }
-div.v   { -webkit-transform: rotateY(  90deg ) translateZ( 90px );transform: rotateY(  90deg ) translateZ( 90px ); }
-div.vi  { -webkit-transform: rotateX( -90deg ) translateZ( 90px );transform: rotateX( -90deg ) translateZ( 90px ); }
+.i   { -webkit-transform: rotateX(  90deg ) translateZ( 99px );transform: rotateX(  90deg ) translateZ( 99px ); }
+.ii  { -webkit-transform: rotateY( -90deg ) translateZ( 99px );transform: rotateY( -90deg ) translateZ( 99px ); }
+.iii { -webkit-transform: rotateX( 180deg ) translateZ( 99px );transform: rotateX( 180deg ) translateZ( 99px ); }
+.iv  { -webkit-transform: rotateY(   0deg ) translateZ( 99px );transform: rotateY(   0deg ) translateZ( 99px ); }
+.v   { -webkit-transform: rotateY(  90deg ) translateZ( 99px );transform: rotateY(  90deg ) translateZ( 99px ); }
+.vi  { -webkit-transform: rotateX( -90deg ) translateZ( 99px );transform: rotateX( -90deg ) translateZ( 99px ); }
 #dado b.center {width:100%; height:100%; line-height:200px; position: absolute; top:0px; left:0px}
 #dado b.left {width:50%; height:50%; line-height:100px; float:left;}
 #dado b.right {width:50%; height:50%; line-height:100px; float:right;}

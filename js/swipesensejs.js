@@ -129,5 +129,5 @@
 			// REPLACE WITH YOUR ROUTINES
 			swipedElement.style.backgroundColor = 'purple';
 		}
-		alert('l: '+swipeLength+' d: '+swipeDirection+' a: '+swipeAngle);
+		alert('l: '+swipeLength+' d: '+swipeDirection+' a: '+swipeAngle+' id: '+triggerElementID);
 	}

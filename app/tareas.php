@@ -11,7 +11,7 @@ var f5lista = function() {
 	tareas = JSON.parse(localStorage.tareas);
 	var html='';
 	for (var i=0;i<tareas.length;i++) {
-		html += '<li class="'+tareas[i][0]+' '+tareas[i][1]+'" id="li'+i+'"><i></i><b></b><h3>'+tareas[i][2]+'</h3><span>'+tareas[i][3]+'</span></li>';
+		html += '<li class="'+tareas[i][0]+' '+tareas[i][1]+'" id="li'+i+'" ontouchstart="touchStart(event,\'tareaswrapper\');"  ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);"><i></i><b></b><h3>'+tareas[i][2]+'</h3><span>'+tareas[i][3]+'</span></li>';
 	}
 	lista.html(html);
 	li=$('li',lista );
