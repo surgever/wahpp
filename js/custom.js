@@ -15,7 +15,7 @@ var cargar = function() {
 }
 var showdesk = function() {
 	var $not = $('#noticias',$desk).addClass('loading');
-	/*if(!sessionStorage.noticias) $.ajax({
+	if(!sessionStorage.noticias) $.ajax({
 		dataType: 'jsonp',jsonp: 'jsonp_callback',url: 'http://wahackpokemon.com/wah/api/get.news.php',
 		success: function(data) {
 			var html='';
@@ -32,7 +32,7 @@ var showdesk = function() {
 	});
 	else { $not.removeClass('loading').html(sessionStorage.noticias);
 			$('.tit',$not).on('click',pledesplegar);
-	}*/
+	}
 	for(var i=0;i<apps.length;i++) {
 		$('#dir',$desk).append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="app/'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
 	}

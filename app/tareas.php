@@ -30,9 +30,9 @@ var tareanueva = function(o) {
 	localStorage.tareas = JSON.stringify(tareas);
 	f5lista();
 	}};
-var tareaver = function(e) {
+var tareaver = function(e) {e.stopPropagation();
 	$(this).parents('li').toggleClass('show');};
-var tareaeditar = function(e) {
+var tareaeditar = function(e) {e.stopPropagation();
 	tarea = $(this);
 	if(tarea.context.tagName=='B') tarea = tarea.parents('li');
 	id = tarea.data('n');
@@ -46,13 +46,13 @@ var tareaeditar = function(e) {
 		f5lista();
 	}
 	};
-var tareahecho = function(e) {
+var tareahecho = function(e) {e.stopPropagation();
 	tarea  = $(this); id =  tarea.data('n');
 	if(tarea.hasClass('hecho')) {tarea.removeClass('hecho');tareas[id][0]='';}
 		else  {tarea.addClass('hecho');tareas[id][0]='hecho';}
 	localStorage.tareas = JSON.stringify(tareas);
 	};
-var tareaborrar = function(e) { if(confirm(l8n.borrar)) {
+var tareaborrar = function(e) {e.stopPropagation(); if(confirm(l8n.borrar)) {
 	tarea = $(this);
 	if(tarea.context.tagName=='B') tarea = tarea.parents('li');
 	tarea.remove();
@@ -60,7 +60,7 @@ var tareaborrar = function(e) { if(confirm(l8n.borrar)) {
 	localStorage.tareas = JSON.stringify(tareas);
 	f5lista();
 	}};
-var tareacolorear = function() {
+var tareacolorear = function(e) {e.stopPropagation();
 	tarea  = $(this);
 	var color;
 	if(tarea.context.tagName=='B') { tarea = tarea.parents('li'); id = tarea.data('n'); color = tareas[id][1]; var dolist=1;}
