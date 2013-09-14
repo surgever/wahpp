@@ -4,7 +4,7 @@
         id        = "com.wahackpokemon.wahpp"
         versionCode="10" 
         version   = "1.0.0">
-    <name>Wahpp Suite</name>
+    <name>Wahpp Reload</name>
     <description>
         Whack a Hack app! 
     </description>
@@ -20,7 +20,6 @@
 	<access origin="https://ytimg.com" />
     <preference name="fullscreen" value="true" />
     <preference name="show-splash-screen-spinner" value="false" />
-	<preference name="splash-screen-duration" value="3000" />
 	<preference name="backgroundColor" value="0xff000000" />
 	<gap:splash src="img/splash.png" />
 </widget>

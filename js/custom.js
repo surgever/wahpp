@@ -1,17 +1,9 @@
 var msg,apps,equis,$app,$desk,$load=$('#pageload'),desked=0;
 apps = [["ajustes","Ajustes"],["reloj","Reloj"],["pizarra","Pizarra"],["dado","Dado"],["tareas","Tareas"],["ranking","Ranking"]];
 
-var intro = function() {
-	$('div',$load).fadeIn(2000,function(){
-		$('span',this).animate({opacity:1},180,function(){
-			cargar();
-			setTimeout(function(){
-				$load.fadeOut(2000,function(){$load.remove();});
-			},1000);
-		});
-	});
-	sessionStorage.introed = true;
-}
+var cl = function(o,add,remove){
+	$(o).addClass(add).removeClass(remove);
+};	
 var introvilla = function() {
 	return false;
 };
@@ -99,8 +91,5 @@ window.onpopstate = function(event) {
 };
 $(document).ready(function() {
 	if(typeof(Storage)==="undefined") alert('Sin almacenamiento local la aplicación no funcionará.') 
-	else {
-		if(!sessionStorage.introed) intro();
-		else { $load.remove(); cargar(); }
-	}
+	else cargar();
 });
