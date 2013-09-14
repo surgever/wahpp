@@ -1,5 +1,5 @@
 var msg,apps,equis,$app,$desk,$load=$('#pageload'),desked=0;
-apps = [["ajustes","Ajustes"],["reloj","Reloj"],["pizarra","Pizarra"],["dado","Dado"],["reloj","Reloj"],["tareas","Tareas"],["pizarra","Pizarra"],["ajustes","Ajustes"],["reloj","Reloj"],["pizarra","Pizarra"],["ajustes","Ajustes"],["reloj","Reloj"],["pizarra","Pizarra"]];
+apps = [["ajustes","Ajustes"],["reloj","Reloj"],["pizarra","Pizarra"],["dado","Dado"],["tareas","Tareas"],["ranking","Ranking"]];
 
 var intro = function() {
 	$('div',$load).fadeIn(2000,function(){
@@ -24,7 +24,7 @@ var cargar = function() {
 var showdesk = function() {
 	var $not = $('#noticias',$desk).addClass('loading');
 	/*if(!sessionStorage.noticias) $.ajax({
-		dataType: 'jsonp',jsonp: 'jsonp_callback',url: 'http://wahackpokemon.com/wah/api/getnews.php',
+		dataType: 'jsonp',jsonp: 'jsonp_callback',url: 'http://wahackpokemon.com/wah/api/get.news.php',
 		success: function(data) {
 			var html='';
 			//for(var i=0;i<data.length;i++){
@@ -42,7 +42,7 @@ var showdesk = function() {
 			$('.tit',$not).on('click',pledesplegar);
 	}*/
 	for(var i=0;i<apps.length;i++) {
-		$('#dir',$desk).append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="img/ico-'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
+		$('#dir',$desk).append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="app/'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
 	}
 	$('#dir a',$desk).on('dragstart touchmove', function (e) {e.preventDefault();});
 	$('#dir a',$desk).on('click touchstart',function(e){

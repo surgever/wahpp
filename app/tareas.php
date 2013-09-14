@@ -62,10 +62,10 @@ var tareacolorear = function() {
 	f5lista();
 	};
 var eventostareas = function() {
-	$(li).on('touchstart',function(e){touchStart(e,$(this).attr('id'));});
-	$(li).on('touchend',function(e){touchEnd(e);});
-	$(li).on('touchmove',function(e){touchMove(e);});
-	$(li).on('touchcancel',function(e){touchCancel(e);});
+	$(lista).on('touchstart',function(event){touchStart(event,$(this).attr('id'));});
+	$(lista).on('touchend',function(event){touchEnd(event);});
+	$(lista).on('touchmove',function(event){touchMove(event);});
+	$(lista).on('touchcancel',function(event){touchCancel(event);});
 	/*	$('h3',li).click(tareaver);
 	$('h3',li).dblclick(tareaeditar);*/
 	$('i',li).dblclick(tareahecho);
