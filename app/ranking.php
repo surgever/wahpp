@@ -1,14 +1,14 @@
 
-<ul id="list">
+<ul id="list" class="loading">
 
 </ul>
 
 <script type="text/javascript">
+$('#list').html('<li id="titulo"><h1>Whack a Ranking!</h1></li>');
 $.ajax({
 	dataType: 'jsonp',jsonp: 'jsonp_callback',url: 'http://wahackpokemon.com/wah/api/get.ranking.php',
 	success: function(data) {
 		console.log(data);
-		$('#list').html('<li id="titulo"><h1>Whack a Ranking!</h1></li>');
 		$('#list').append('<li id="rey"><small><strong>Rey del ranking:</strong><br /> '+data.king.tit+'</small><br /><a href="'+data.king.url+'"><img src="'+data.king.img+'" alt="No screen"/></a></li>');
 		$('#list').append(data.list);/*
 		var html='';

@@ -1,7 +1,8 @@
 <div id="tareaswrapper" class="white">
 <ul id="tareas">
 </ul>
-<button id="crear"><strong>+ Añadir tarea</strong></button>
+<div><button id="crear">+ Añadir tarea</button></div>
+<div id="tabs"><a class="white">Todo</a><a class="red">Sitio</a><a class="blue">Aprender</a><a class="yellow">Hack</a><a class="cyan">Gráficas</a><a class="green">Recursos</a></div>
 </div>
 <script type="text/javascript">
 var lista=$('#tareas'),li,tareas,tarea,id,l8n={};
@@ -11,14 +12,29 @@ var f5lista = function() {
 	tareas = JSON.parse(localStorage.tareas);
 	var html='';
 	for (var i=0;i<tareas.length;i++) {
-		html += '<li class="'+tareas[i][0]+' '+tareas[i][1]+'" data-n="'+i+'" ><i><img src="img/hecho.png" /></i><h3>'+tareas[i][2]+'</h3><span>'+tareas[i][3]+'<small><b class="editar">Editar</b> <b class="colorear">Color</b> <b class="borrar">Borrar </b></small></li>';
+		html += '<li class="'+tareas[i][0]+' '+tareas[i][1]+'" data-n="'+i+'" ><i><img src="/img/hecho.png" /></i><h3>'+tareas[i][2]+'</h3><span>'+tareas[i][3]+'<small><b class="editar">Editar</b> <b class="colorear">Color</b> <b class="borrar">Borrar </b></small></li>';
 	}
 	lista.html(html);
 	li=$('li',lista );
 	eventostareas();
 };
+var deslizandoTarea = function(event, phase, direction, distance, fingers) {
+	event.stopPropagation(); var li = $(this);
+	if(phase=="move" && direction=="right") {
+		if(li.hasClass('hecho')) $('i',li).css('opacity',1-distance*0.05);
+		else $('i',li).css('opacity',distance*0.05); }
+	else if(phase=="move" && direction=="left")
+		li.css('right',distance).css('opacity',1-distance*0.006);
+	else if ( phase == "cancel" ) 
+		li.removeAttr('style').find('i').removeAttr('style');
+	else if ( phase =="end" ) {
+		if (direction == "right") tareahecho(event,li);
+		else if (direction == "left" && distance>150) tareaborrar(event,li);
+		li.removeAttr('style').find('i').removeAttr('style');}
+	
+};
 var tareanueva = function(o) {
-	tarea = ['','white'];
+	tarea = ['',$('#tareaswrapper').attr('class')];
 	var tit = '';
 	if(tit = prompt(l8n.anadir)) {
 	while(tit==false) tit = prompt(l8n.anadir);
@@ -46,41 +62,57 @@ var tareaeditar = function(e) {e.stopPropagation();
 		f5lista();
 	}
 	};
-var tareahecho = function(e) {e.stopPropagation();
-	tarea  = $(this); id =  tarea.data('n');
-	if(tarea.hasClass('hecho')) {tarea.removeClass('hecho');tareas[id][0]='';}
-		else  {tarea.addClass('hecho');tareas[id][0]='hecho';}
+var tareahecho = function(e,li) {
+	if(e !== undefined) e.stopPropagation();
+	tarea = (li === undefined)?$(this):li;
+	id =  tarea.data('n');
+	if(tarea.hasClass('hecho')) {
+		tarea.removeClass('hecho');tareas[id][0]='';
+	} else {
+		tarea.addClass('hecho');tareas[id][0]='hecho';
+		var tarea = tareas[id];
+		tareas.splice(id,1);
+		tareas.push(tarea);
+	}
 	localStorage.tareas = JSON.stringify(tareas);
+	f5lista();
 	};
-var tareaborrar = function(e) {e.stopPropagation(); if(confirm(l8n.borrar)) {
-	tarea = $(this);
+var tareaborrar = function(e,li) {
+	if(e !== undefined) e.stopPropagation();
+	tarea = (li === undefined)?$(this):li;
 	if(tarea.context.tagName=='B') tarea = tarea.parents('li');
 	tarea.remove();
 	tareas.splice(tarea.data('n'), 1);
 	localStorage.tareas = JSON.stringify(tareas);
 	f5lista();
-	}};
-var tareacolorear = function(e) {e.stopPropagation();
+	};
+var tareacolorear = function(e, dir) {e.stopPropagation();
 	tarea  = $(this);
 	var color;
 	if(tarea.context.tagName=='B') { tarea = tarea.parents('li'); id = tarea.data('n'); color = tareas[id][1]; var dolist=1;}
 	else { color = $(this).context.className; }
 	for (var i=0;i<colores.length;i++) if(color==colores[i]) {
 		tarea.removeClass(color);
-		color= (i<colores.length-1)? colores[i+1] :colores[0];
+		if(dir == 'right') color= (i>0)? colores[i-1] :colores[colores.length-1];
+		else color= (i<colores.length-1)? colores[i+1] :colores[0];
 		break; break;}
 	if(dolist) {
 		tareas[id][1] = color;
 		localStorage.tareas = JSON.stringify(tareas);}
 	tarea.addClass(color)
 	};
+var tabcolorear = function() {
+	$('#tareaswrapper')[0].className= this.className;
+	};
 var eventostareas = function() {
 	$(li)
 	.swipe( {
-		swipeLeft:tareaborrar,
-		swipeRight:tareahecho
+			triggerOnTouchEnd : true,
+			swipeStatus : deslizandoTarea,
+			allowPageScroll:"vertical",
+			cancelThreshold : 40
 		})
-	.on('dblclick',tareaeditar);
+	.on('doubletap longtap',tareaeditar);
 	
 	$('h3',li).on('click tap',tareaver)
 	$('.borrar',li).click(tareaborrar);
@@ -94,6 +126,7 @@ $('#tareaswrapper').swipe({
 		swipeLeft:tareacolorear,
 		swipeRight:tareacolorear
 		})
+$('#tabs a').click(tabcolorear);
 f5lista();
 
 l8n.anadir = 'Añadir tarea:';
@@ -103,8 +136,8 @@ l8n.borrar = '¿Quieres borrar esta tarea?';
 </script>
 <style type="text/css">
 #pageapp.on {background: #ccc}
-#tareaswrapper {clear:both; margin:10px; background:#4586d6;padding:30px 10px 5px;color:#fff; line-height: 20px;box-shadow: inset 0px 5px 10px #174292, 0px -1px 0px #999, 0px 1px 2px #fff; border-radius: 5px}
-#tareas li, #tareaswrapper #crear {min-height:30px;clear:both; background:rgba(0,0,0,0.2); border-radius:5px; margin:5px 0; padding: 0 10px 0 5px}
+#tareaswrapper {clear:both; margin:10px; background:#555;padding:30px 10px 5px;color:#fff; line-height: 20px;box-shadow: inset 0px 5px 10px rgba(0,0,0,0.4), 0px -1px 0px #999, 0px 1px 2px #fff; border-radius: 5px; position:relative}
+#tareas li, #tareaswrapper #crear {min-height:30px;clear:both; background:rgba(0,0,0,0.2); border-radius:5px; margin:5px 0; padding: 0 10px 0 5px; position: relative;}
 #tareas i {display: block; width: 40px; height:40px; float: left;opacity:0 }
 #tareas i img {width: 40px; height:40px;}
 #tareas b {cursor: pointer;display: block;float: right;margin: 0;padding: 2px 10px;color:rgba(255,255,255,0.5)}
@@ -113,6 +146,7 @@ l8n.borrar = '¿Quieres borrar esta tarea?';
 #tareas span {display: block; height:0px; overflow: hidden; line-height: 30px;}
 #tareas span small {display:block; text-align: right}
 #tareas li.show span {height:auto;}
+#tareas li.hecho {opacity:0.7}
 #tareas li.hecho i {opacity:1}
 #tareas li.hecho h3 {text-decoration: line-through}
 ['white','red','yellow','green','blue','violet'];
@@ -122,7 +156,7 @@ l8n.borrar = '¿Quieres borrar esta tarea?';
 #tareas li.yellow h3 {color:#fffbb8}
 #tareas li.cyan h3 {color:#b8fff4}
 #tareas li.green h3 {color:#b6ff99}
-#tareaswrapper li.white {background:rgba(0,0,0,0.2);}
+#tareaswrapper .white {background:rgba(0,0,0,0.2);}
 #tareaswrapper.red,#tareaswrapper .red  {background:rgba(150,50,0,0.6);}
 #tareaswrapper.blue,#tareaswrapper .blue {background:rgba(0,0,150,0.6);}
 #tareaswrapper.yellow,#tareaswrapper .yellow {background:rgba(150,150,0,0.6);}
@@ -130,6 +164,10 @@ l8n.borrar = '¿Quieres borrar esta tarea?';
 #tareaswrapper.green,#tareaswrapper .green {background:rgba(0,150,0,0.6);}
 #tareaswrapper li {display:none}
 #tareaswrapper.white li,#tareaswrapper.red .red,#tareaswrapper.blue .blue,#tareaswrapper.yellow .yellow,#tareaswrapper.cyan .cyan,#tareaswrapper.green .green{display:block}
-#tareaswrapper #crear {display: block; border:0 none; margin:15px auto 20px; color: #fff}
+#tareaswrapper #crear {display: block;border:0 none;margin:30px auto;color: #fff; font-weight:bold}
 #tareaswrapper #crear:hover {background:rgba(0,0,0,0.4)}
+#tabs {position: absolute; bottom:-30px}
+#tabs a {display: block; float: left; margin:0 3px; padding:5px 0; width:70px; height:20px; text-align: center; border-radius:0 0 5px 5px; cursor: pointer}
+#tabs a.white {background:#555}
+#tabs a:active {padding:8px 0 5px; margin-bottom:-3px}
 </style>
