@@ -1,7 +1,7 @@
 <div id="tareaswrapper" class="white">
 <ul id="tareas">
 </ul>
-<div><button id="crear">+ Añadir tarea2</button></div>
+<div><button id="crear">+ Añadir tarea</button></div>
 <div id="tabs"><a class="white">Todo</a><a class="red">Sitio</a><a class="blue">Aprender</a><a class="yellow">Hack</a><a class="cyan">Gráficas</a><a class="green">Recursos</a></div>
 </div>
 <script type="text/javascript">
@@ -133,8 +133,8 @@ l8n.borrar = '¿Quieres borrar esta tarea?';
 </script>
 <style type="text/css">
 #pageapp.on {background: #ccc}	
-#tareaswrapper {clear:both; margin:10px 10px 40px; background:#555;padding:30px 10px 5px;color:#fff; line-height: 20px;box-shadow: inset 0px 5px 10px rgba(0,0,0,0.4), 0px -1px 0px #999, 0px 1px 2px #fff; border-radius: 5px; position:relative}
-#tareas li, #tareaswrapper #crear {display:block;clear:both; background:rgba(0,0,0,0.2); border-radius:5px; margin:5px 0; padding: 0 10px 0 5px; position: relative; -webkit-transition:0.1s linear;-moz-transition:0.1s linear;transition:0.1s linear; overflow:hidden}
+#tareaswrapper {clear:both; margin:10px 10px 40px; background:#ad48c3;padding:30px 10px 5px;color:#fff; line-height: 20px;box-shadow: inset 0px 5px 10px rgba(0,0,0,0.4), 0px -1px 0px #999, 0px 1px 2px #fff; border-radius: 5px; position:relative;-webkit-transition:background 0.1s linear;-moz-transition:background 0.1s linear;transition:background 0.1s linear;}
+#tareas li, #tareaswrapper #crear {display:block;min-height:30px;clear:both; background:rgba(0,0,0,0.2); border-radius:5px; margin:5px 0; padding: 0 10px 0 5px; position: relative; -webkit-transition:background 0.1s linear;-moz-transition:background 0.1s linear;transition:background 0.1s linear; overflow:hidden}
 #tareas i {display: block; width: 40px; height:40px; float: left;opacity:0; background:url(img/hecho.png) center no-repeat; background-size: cover }
 #tareas b {cursor: pointer;display: block;float: right;margin: 0;padding: 2px 10px;color:rgba(255,255,255,0.5)}
 #tareas b:hover {color:#fff;}
@@ -158,13 +158,13 @@ l8n.borrar = '¿Quieres borrar esta tarea?';
 #tareaswrapper.yellow,#tareaswrapper .yellow {background:rgba(150,150,0,0.6);}
 #tareaswrapper.cyan,#tareaswrapper .cyan {background:rgba(0,100,100,0.6);}
 #tareaswrapper.green,#tareaswrapper .green {background:rgba(0,150,0,0.6);}
-#tareaswrapper li {height: 0px; min-height: 0px}
-#tareaswrapper.white li,#tareaswrapper.red li.red,#tareaswrapper.blue li.blue,#tareaswrapper.yellow li.yellow,#tareaswrapper.cyan li.cyan,#tareaswrapper.green li.green{height: auto;min-height:30px;}
-#tareaswrapper #crear {display: block;min-height:30px;border:0 none;margin:30px auto;color: #fff; font-weight:bold}
+#tareaswrapper li {display:none}
+#tareaswrapper.white li,#tareaswrapper.red li.red,#tareaswrapper.blue li.blue,#tareaswrapper.yellow li.yellow,#tareaswrapper.cyan li.cyan,#tareaswrapper.green li.green{display:block}
+#tareaswrapper #crear {display: block;border:0 none;margin:30px auto;color: #fff; font-weight:bold}
 #tareaswrapper #crear:hover {background:rgba(0,0,0,0.4)}
 #tabs {position: absolute; bottom:-30px}
 #tabs a {display: block; float: left; margin:0 3px; padding:5px 0; width:70px; height:20px; text-align: center; border-radius:0 0 5px 5px; cursor: pointer; font-size: 13px;}
-#tabs a.white {background:#555}
+#tabs a.white {background:#ad48c3}
 #tabs a:active {padding:8px 0 5px; margin-bottom:-3px}
 
 

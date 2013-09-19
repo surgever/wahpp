@@ -1,4 +1,3 @@
-
 <ul id="list" class="loading">
 
 </ul>
@@ -25,6 +24,7 @@ $.ajax({
 </script>
 <style type="text/css">
 #pageapp.on {background:#fff}
+#list {min-height:200px}
 #list li {display: block; min-height:40px; padding:5px; background: #fff; color: #666}
 #list li:nth-child(even) {background: #eee}
 #list #titulo {background: #69bcc6; color: #fff; text-align: center;line-height:40px; font-size:35px}
