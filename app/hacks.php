@@ -45,9 +45,9 @@ console.log(hack);
 	if(hack.p!='undefined' && hack.p!='') html +='<li><img src="'+hack.p+'" alt="(Fallo URL portada)" /></li>';
 	if(hack.d!='undefined') html +='<li><p>'+hack.d+'</p></li>';
 	html +='<li id="hackmenusec"><ul>';
-	if(hack.m!='undefined') html +='<li id="hackmapa"><a>Ver mapa de '+hack.r+'</a></li>';
-	if(hack.s!='undefined') html +='<li id="hackscan"><a>Ver scan del juego</a></li>';
-	html +='<li id="hackiframe"><a>Ver space completo de '+hack.t+'</a></li>';
+	if(hack.m!='undefined') html +='<li id="hackmapa">Ver mapa de '+hack.r+'</li>';
+	if(hack.s!='undefined') html +='<li id="hackscan">Ver scan del juego</li>';
+	html +='<li id="hackiframe">Ver space completo de '+hack.t+'</li>';
 	html +='<li id="hackautor">Hecho por '+hack.a+'</li></ul></li>';
 	$('ul',hackinfo).html(html);
 	slideScreen('#spacewrapper',1);
@@ -89,7 +89,7 @@ extrapopstate();
 <style type="text/css">
 #pageapp.on {background:#fff;height:100%; color:#333}
 #list {min-height:200px;}
-#list li {display: block; min-height:40px; padding:5px; background: #fff url(img/chevron.png) right center no-repeat; color: #666; text-align: left}
+#list li {display: block; min-height:40px; padding:5px; background: #fff url(img/chevron.png) right center no-repeat; color: #666; text-align: left; border-bottom:1px solid #ccc;}
 #list li:nth-child(even) {background-color: #eee}
 #spacewrapper .titulo {background: #C5B600; color: #fff;line-height:40px; font-size:35px; text-align:center; padding:5px; border-bottom:1px solid #978C00}
 #list i {display:block; float: left; width:30px; height:30px; margin:0 5px 0 0; line-height:30px; text-align:center; border:5px solid #000;border-radius:50%; background z:gray;color: #fff; font-size:16px; font-weight:bold; font-style:normal}
@@ -104,6 +104,7 @@ extrapopstate();
 #secinfo {position: absolute; top:0px; left:200%;}
 #hackinfo li{text-align:center; padding:5px}
 #hackinfo li#hackmenusec{padding:0;}
-#hackinfo li li{text-align:left; border:1px solid #ccc; border-width:1px 0px; margin-bottom:-1px; background: #fff url(img/chevron.png) right center no-repeat}
+#hackinfo li li{text-align:left; border:1px solid #ccc; border-width:1px 0px; margin-bottom:-1px; background: #fff url(img/chevron.png) right center no-repeat; padding:20px 10px}
+#hackinfo li li:hover {background-color:#eee}
 #hackinfo #hackautor{text-align:right;background:none}
 </style>
