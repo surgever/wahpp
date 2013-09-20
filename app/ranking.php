@@ -27,7 +27,7 @@ $.ajax({
 #list {min-height:200px}
 #list li {display: block; min-height:40px; padding:5px; background: #fff; color: #666}
 #list li:nth-child(even) {background: #eee}
-#list #titulo {background: #69bcc6; color: #fff; text-align: center;line-height:40px; font-size:35px}
+#list #titulo {background: #69bcc6; color: #fff; text-align: center;line-height:40px; font-size:35px; border-bottom:1px solid #52929a}
 #list #rey {text-align: center; height: auto; background:#fff}
 #list #rey strong {color: #69bcc6;}
 #list i {display:block; float: left; width:30px; height:30px; margin:0 5px 0 0; line-height:30px; text-align:center; border:5px solid #000;border-radius:50%; background z:gray;color: #fff; font-size:16px; font-weight:bold; font-style:normal}

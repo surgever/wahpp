@@ -1,4 +1,4 @@
-var msg,apps,equis,$app,$desk,$load=$('#pageload'),desked=0;
+var msg,apps,equis,$app,$desk,$load=$('#pageload'),desked=0,extrapopstate;
 apps = [["ajustes","Ajustes"],["reloj","Reloj"],["pizarra","Pizarra"],["dado","Dado"],["tareas","Tareas"],["ranking","Ranking"],["hacks","Spaces"]];
 
 var cl = function(o,add,remove){
@@ -15,7 +15,7 @@ var cargar = function() {
 }
 var showdesk = function() {
 	var $not = $('#noticias',$desk).addClass('loading');
-	if(!sessionStorage.noticias) $.ajax({
+	/*if(!sessionStorage.noticias) $.ajax({
 		dataType: 'jsonp',jsonp: 'jsonp_callback',url: 'http://wahackpokemon.com/wah/api/get.news.php',
 		success: function(data) {
 			var html='';
@@ -32,7 +32,7 @@ var showdesk = function() {
 	});
 	else { $not.removeClass('loading').html(sessionStorage.noticias);
 			$('.tit',$not).on('click',pledesplegar);
-	}
+	}*/
 	for(var i=0;i<apps.length;i++) {
 		$('#dir',$desk).append('<a href="app/'+apps[i][0]+'.php" rel="'+apps[i][0]+'"><img src="app/'+apps[i][0]+'.png"/><span>'+apps[i][1]+'</span></a>');
 	}
@@ -85,9 +85,11 @@ var pledesplegar = function() {
 // $().load(url) */
 
 window.onpopstate = function(event) {
-		if(window.location.hash) var hash = window.location.hash.substring(1);
+		if(window.location.hash) var hash = window.location.hash.substring(1); //console.log(hash);
+		//if(hash.indexOf('/')!=-1) {console.log(hash); hash=hash.split('/'); hash=hash[0];}
 		if(hash && !$('#pageapp').hasClass('on')) openapp({name: hash,url: 'app/'+hash+'.php'});
 		else if(!hash && $('#pageapp').hasClass('on')) closeapp();
+		if(extrapopstate) extrapopstate();
 };
 $(document).ready(function() {
 	if(typeof(Storage)==="undefined") alert('Sin almacenamiento local la aplicación no funcionará.') 
