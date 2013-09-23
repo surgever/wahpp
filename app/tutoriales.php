@@ -94,7 +94,7 @@ extrapopstate();
 <style type="text/css">
 #pageapp.on {background:#fff;height:100%; color:#333}
 #tutowrapper{height:100%;}
-#tutoinfo {position: absolute; top:0px; left:100%;}
+#tutoinfo {position: absolute; top:0px; left:100%;z-index:3}
 .panel {width:100%;height:100%;overflow-y:auto}
 #tutolist {overflow:visible;transform:.2s linear}
 #tutotabs {background: #006; float:left;height:100%;position:fixed;top:0px;left:0px;z-index:2;}
