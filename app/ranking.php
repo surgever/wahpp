@@ -8,16 +8,7 @@ $.ajax({
 	dataType: 'jsonp',jsonp: 'jsonp_callback',url: 'http://wahackpokemon.com/wah/api/get.ranking.php',
 	success: function(data) {
 		$('#list').append('<li id="rey"><small><strong>Rey del ranking:</strong><br /> '+data.king.tit+'</small><br /><a href="'+data.king.url+'"><img src="'+data.king.img+'" alt="No screen"/></a></li>');
-		$('#list').append(data.list);/*
-		var html='';
-		for(var i=0;i<data.length;i++){
-		for(var i=0;i<3;i++){
-			html += '<article class="desplegable"><header><h1 class="tit">'+data[i][2]
-			+'<span>~'+data[i][1]+'</span><b>W</b></h1></header><section>'+data[i][3]+'</section></article>';
-		};
-		sessionStorage.noticias = html;
-		$not.removeClass('loading').html(html);
-		$('.tit',$not).on('click',pledesplegar);*/
+		$('#list').append(data.list);
 	},
 	error: function(err, textStatus, errorThrown) {alert(textStatus);} 
 });

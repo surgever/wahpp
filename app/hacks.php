@@ -70,7 +70,7 @@ var openhackscan = function(){
 }
 var openhackiframe = function(){
 	$('#secinfo h1').text(hack.n);
-	$('#secinfo section').html('<iframe frameborder="0" height="465px" width="470px" scrolling="no" src="http://wahackpokemon.com/es/'+hack.n+'-space" frameborder="0" allowfullscreen style="width:100%;height:100%"></iframe>');
+	$('#secinfo section').html('<iframe frameborder="0" height="465px" width="470px" scrolling="yes" src="http://wahackpokemon.com/es/'+hack.n+'-space" frameborder="0" allowfullscreen style="width:100%;height:100%"></iframe>');
 	slideScreen('#spacewrapper',2);
 	history.pushState({name:'title'}, hack.r, '/#hacks/'+hack.n+'/space');
 }
@@ -90,7 +90,7 @@ extrapopstate();
 #pageapp.on {background:#fff;height:100%; color:#333}
 #list {min-height:200px;}
 #list li {display: block; min-height:40px; padding:5px; background: #fff url(img/chevron.png) right center no-repeat; color: #666; text-align: left; border-bottom:1px solid #ccc;}
-#list li:nth-child(even) {background-color: #eee}
+#list li:nth-child(even) {background-color: #f7f7f7}
 #spacewrapper .titulo {background: #C5B600; color: #fff;line-height:40px; font-size:35px; text-align:center; padding:5px; border-bottom:1px solid #978C00}
 #list i {display:block; float: left; width:30px; height:30px; margin:0 5px 0 0; line-height:30px; text-align:center; border:5px solid #000;border-radius:50%; background z:gray;color: #fff; font-size:16px; font-weight:bold; font-style:normal}
 #list strong {display:block; color: #C5B600; font-size: 18px;}
@@ -105,6 +105,6 @@ extrapopstate();
 #hackinfo li{text-align:center; padding:5px}
 #hackinfo li#hackmenusec{padding:0;}
 #hackinfo li li{text-align:left; border:1px solid #ccc; border-width:1px 0px; margin-bottom:-1px; background: #fff url(img/chevron.png) right center no-repeat; padding:20px 10px}
-#hackinfo li li:hover {background-color:#eee}
+#list li:hover,#hackinfo li li:hover {background-color:#eee}
 #hackinfo #hackautor{text-align:right;background:none}
 </style>
