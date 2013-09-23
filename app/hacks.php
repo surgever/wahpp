@@ -1,9 +1,8 @@
 <div id="spacewrapper">
 	<div id="hacklist" class="panel">
 		<h1 class="titulo">Espacios de Hacks</h1>
-		<ul id="list" class="loading">
+		<ul id="list" class="loading"></ul>
 	</div>
-	</ul>
 	<div id="hackinfo" class="panel">
 		<h1 class="titulo"></h1>
 		<ul></ul>
@@ -39,7 +38,6 @@ var openhack = function(){
 		m : t.data('m').replace('..','').replace('/hack/','http://wahackpokemon.com/hack/'),
 		s : t.data('s').replace('..','').replace('/hack/','http://wahackpokemon.com/hack/')
 	};
-console.log(hack);
 	$('h1',hackinfo).text(hack.t);
 	var html = '<li id="hacknameasy">'+hack.n+'-space</li>';
 	if(hack.p!='undefined' && hack.p!='') html +='<li><img src="'+hack.p+'" alt="(Fallo URL portada)" /></li>';
