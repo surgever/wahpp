@@ -20,7 +20,6 @@
 		</div>
 	</div>
 	<div id="tutoinfo" class="panel">
-		<h1 class="titulo">Tutorial</h1>
 		<section>Lorem ipsum dolor sit amet.</section>
 	</div>
 
@@ -69,7 +68,7 @@ var abrirtuto = function(){
 			a : $('cite',t).text(),
 		};
 	console.log(tuto);
-	$('#tutoinfo h1').text(tuto.t);
+	//$('#tutoinfo h1').text(tuto.t);
 	$('#tutoinfo section').html('<iframe frameborder="0" height="100%" width="100%" scrolling="yes" src="'+tuto.u+'" frameborder="0" allowfullscreen style="width:100%;height:100%"></iframe>');
 	slideScreen('#tutowrapper',1,0);
 	history.pushState({name:'tutoial'}, 'Tutorial', '/#tutoriales/open');
@@ -95,6 +94,7 @@ extrapopstate();
 #pageapp.on {background:#fff;height:100%; color:#333}
 #tutowrapper{height:100%;}
 #tutoinfo {position: absolute; top:0px; left:100%;z-index:3}
+#tutoinfo section {height:100%;}
 .panel {width:100%;height:100%;overflow-y:auto}
 #tutolist {overflow:visible;transform:.2s linear}
 #tutotabs {background: #006; float:left;height:100%;position:fixed;top:0px;left:0px;z-index:2;}
@@ -103,7 +103,6 @@ extrapopstate();
 .hoja {margin-left:50px;height:100%;overflow-y:auto;}
 
 .titulo {color: #1B5FCD;line-height:40px; font-size:35px; padding:5px;}
-.titulo:first-letter {font-size:40px;}
 .hoja li {display: block; min-height:40px; padding:5px; background: #fff url(img/chevron.png) right center no-repeat; color: #666; text-align: left; border-bottom:1px solid #ccc;}
 .hoja li:nth-child(even) {background-color: #f7f7f7}
 .hoja li:hover {background-color:#eee}
