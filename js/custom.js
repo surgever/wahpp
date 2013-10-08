@@ -1,5 +1,5 @@
 var msg,apps,equis,$app,$desk,$load=$('#pageload'),desked=0,extrapopstate;
-apps = [["ajustes","Ajustes"],["reloj","Reloj"],["pizarra","Pizarra"],["dado","Dado"],["tareas","Tareas"],["ranking","Ranking"],["hacks","Spaces"],["tutoriales","Tutoriales"]];
+apps = [["ajustes","Ajustes"],["reloj","Reloj"],["pizarra","Pizarra"],["dado","Dado"],["tareas","Tareas"],["ranking","Ranking"],["hacks","Spaces"],["tutoriales","Tutoriales"],["cuenta","Cuenta"]];
 
 var cl = function(o,add,remove){
 	$(o).addClass(add).removeClass(remove);
